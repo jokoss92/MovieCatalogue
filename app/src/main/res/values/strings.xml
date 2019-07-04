@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MovieCatalogue</string>
+    <string name="year">2019</string>
+    <string name="movie_title">Movie Title</string>
+    <string name="genre">Comedy, Action</string>
+    <string name="rating">8.7</string>
+</resources>
