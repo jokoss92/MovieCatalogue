@@ -26,6 +26,12 @@
         <item>The Mule</item>
         <item>Venom</item>
     </string-array>
+    <string-array name="data_rating">
+        <item>8.7</item>
+    </string-array>
+    <string-array name="data_genre">
+        <item>Comedy, Action</item>
+    </string-array>
     <string-array name="data_overview">
         <item>Seasoned musician Jackson Maine discovers — and falls in love with — struggling artist Ally. She has just about given up on her dream to make it big as a singer — until Jack coaxes her into the spotlight. But even as Ally\'s career takes off, the personal side of their relationship is breaking down, as Jack fights an ongoing battle with his own internal demons.</item>
         <item>Once home to the most advanced civilization on Earth, Atlantis is now an underwater kingdom ruled by the power-hungry King Orm. With a vast army at his disposal, Orm plans to conquer the remaining oceanic people and then the surface world. Standing in his way is Arthur Curry, Orm\'s half-human, half-Atlantean brother and true heir to the throne.</item>
@@ -40,7 +46,7 @@
         <item>Captain Glass of the USS Arkansas discovers that a coup d\'état is taking place in Russia, so he and his crew join an elite group working on the ground to prevent a war.</item>
         <item>In Depression-era London, a now-grown Jane and Michael Banks, along with Michael\'s three children, are visited by the enigmatic Mary Poppins following a personal loss. Through her unique magical skills, and with the aid of her friend Jack, she helps the family rediscover the joy and wonder missing in their lives.</item>
     </string-array>
-    <array name="data_photo">
+    <array name="data_poster">
         <item>@drawable/poster_a_star</item>
         <item>@drawable/poster_aquaman</item>
         <item>@drawable/poster_avengerinfinity</item>

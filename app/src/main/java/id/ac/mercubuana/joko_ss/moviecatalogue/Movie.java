@@ -1,41 +1,24 @@
 package id.ac.mercubuana.joko_ss.moviecatalogue;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable;
 
-public class Movie {
-    @SerializedName("id")
-    @Expose
-    private int id;
 
-    @SerializedName("title")
-    @Expose
+public class Movie implements Parcelable {
+    private int poster;
     private String title;
+    private String date;
+    private String overview;
+    private String genre;
+    private String rating;
 
-    @SerializedName("poster_path")
-    @Expose
-    private String posterPath;
-
-    @SerializedName("release_date")
-    @Expose
-    private String releaseDate;
-
-    @SerializedName("vote_average")
-    @Expose
-    private float rating;
-
-    @SerializedName("genre_ids")
-    @Expose
-    private List<Integer> genreIds;
-
-    public int getId() {
-        return id;
+    public int getPoster() {
+        return poster;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setPoster(int poster) {
+        this.poster = poster;
     }
 
     public String getTitle() {
@@ -46,37 +29,77 @@ public class Movie {
         this.title = title;
     }
 
-    public String getPosterPath() {
-        return posterPath;
+    public String getDate() {
+        return date;
     }
 
-    public void setPosterPath(String posterPath) {
-        this.posterPath = posterPath;
+    public void setDate(String date) {
+        this.date = date;
     }
 
-    public String getReleaseDate() {
-        return releaseDate;
+    public String getOverview() {
+        return overview;
     }
 
-    public void setReleaseDate(String releaseDate) {
-        this.releaseDate = releaseDate;
+    public void setOverview(String overview) {
+        this.overview = overview;
     }
 
-    public float getRating() {
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public String getRating() {
         return rating;
     }
 
-    public void setRating(float rating) {
+    public void setRating(String rating) {
         this.rating = rating;
     }
 
-    public List<Integer> getGenreIds() {
-        return genreIds;
+    public static Creator<Movie> getCREATOR() {
+        return CREATOR;
     }
 
-    public void setGenreIds(List<Integer> genreIds) {
-        this.genreIds = genreIds;
+    public Movie(){}
+
+    protected Movie(Parcel in) {
+        poster = in.readInt();
+        title = in.readString();
+        date = in.readString();
+        overview = in.readString();
+        genre = in.readString();
+        rating = in.readString();
     }
 
+    public static final Creator<Movie> CREATOR = new Creator<Movie>() {
+        @Override
+        public Movie createFromParcel(Parcel in) {
+            return new Movie(in);
+        }
 
+        @Override
+        public Movie[] newArray(int size) {
+            return new Movie[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(this.poster);
+        dest.writeString(this.title);
+        dest.writeString(this.date);
+        dest.writeString(this.overview);
+        dest.writeString(this.genre);
+        dest.writeString(this.rating);
+    }
 }

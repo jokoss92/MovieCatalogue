@@ -1,62 +1,93 @@
 package id.ac.mercubuana.joko_ss.moviecatalogue;
 
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
+
+import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.view.LayoutInflater;
 
-import java.util.List;
+import java.util.ArrayList;
 
-public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewHolder> {
 
-    private List<Movie> movies;
+public class MoviesAdapter extends BaseAdapter {
+    private Context context;
+    private ArrayList<Movie> movies;
 
-    public MoviesAdapter(List<Movie> movies){
-
-        this.movies = movies;
-        this.allGenres = allGenres;
-    }
-    @NonNull
-    @Override
-    public MovieViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_movie, parent, false);
-        return new MovieViewHolder(view);
+    public MoviesAdapter(Context context) {
+        this.context = context;
+        movies = new ArrayList<>();
     }
 
     @Override
-    public void onBindViewHolder(MovieViewHolder holder, int position) {
-        holder.bind(movies.get(position));
-    }
-
-    @Override
-    public int getItemCount() {
+    public int getCount() {
         return movies.size();
     }
 
-    class MovieViewHolder extends RecyclerView.ViewHolder{
-        TextView releaseDate;
-        TextView rating;
-        TextView title;
-        TextView genres;
-        public MovieViewHolder(View itemView){
-            super(itemView);
-            releaseDate = itemView.findViewById(R.id.item_movie_release_date);
-            title = itemView.findViewById(R.id.item_movie_title);
-            rating = itemView.findViewById(R.id.item_movie_rating);
-            genres = itemView.findViewById(R.id.item_movie_genre);
+    @Override
+    public Object getItem(int i) {
+        return movies.get(i);
+    }
+
+    @Override
+    public long getItemId(int i) {
+        return i;
+    }
+
+    @Override
+    public View getView(int i, View view, ViewGroup viewGroup) {
+       if(view == null){
+           view = LayoutInflater.from(context).inflate(R.layout.item_movie, viewGroup, false);
+       }
+
+        ViewHolder viewHolder = new ViewHolder(view);
+        Movie movie = (Movie) getItem(i);
+        viewHolder.bind(movie);
+        return view;
+    }
+
+    private class ViewHolder{
+        private TextView txtTitle;
+        private TextView txtOverview;
+        private TextView txtRating;
+        private TextView txtGenre;
+        private TextView txtDate;
+        private ImageView imgPoster;
+
+        ViewHolder(View view){
+            txtTitle = view.findViewById(R.id.tv_title);
+            txtOverview = view.findViewById(R.id.tv_overview);
+            txtRating = view.findViewById(R.id.tv_rating);
+            txtGenre = view.findViewById(R.id.tv_genre);
+            txtDate = view.findViewById(R.id.tv_date);
+            imgPoster = view.findViewById(R.id.iv_poster);
         }
 
-        public void bind(Movie movie){
-            releaseDate.setText(movie.getReleaseDate().split("-")[0]);
-            title.setText(movie.getTitle());
-            rating.setText(String.valueOf(movie.getRating()));
-            genres.setText(getGenres(movie.getGenreIds()));
+        void bind(Movie movie){
+            txtTitle.setText(movie.getTitle());
+            txtOverview.setText(movie.getOverview());
+            txtRating.setText(movie.getRating());
+            txtGenre.setText(movie.getGenre());
+            txtDate.setText(movie.getDate());
+            imgPoster.setImageResource(movie.getPoster());
         }
+    }
 
-        private String getGenres(List<Integer> genreIds){
-            List<String> movieGenres = new ArrayList
-        }
+    public Context getContext() {
+        return context;
+    }
+
+    public void setContext(Context context) {
+        this.context = context;
+    }
+
+    public ArrayList<Movie> getMovies() {
+        return movies;
+    }
+
+    public void setMovies(ArrayList<Movie> movies) {
+        this.movies = movies;
     }
 }
