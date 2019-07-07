@@ -67,7 +67,7 @@ public class MoviesAdapter extends BaseAdapter {
 
         void bind(Movie movie){
             txtTitle.setText(movie.getTitle());
-            txtOverview.setText(movie.getOverview());
+//            txtOverview.setText(movie.getOverview());
             txtRating.setText(movie.getRating());
             txtGenre.setText(movie.getGenre());
             txtDate.setText(movie.getDate());

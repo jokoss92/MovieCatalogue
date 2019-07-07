@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity{
             movie.setDate(dataDate[i]);
             movie.setGenre(dataGenre[i]);
             movie.setRating(dataRating[i]);
+            movie.setOverview(dataOverview[i]);
             movies.add(movie);
 
         }
@@ -68,6 +69,7 @@ public class MainActivity extends AppCompatActivity{
         dataPoster = getResources().obtainTypedArray(R.array.data_poster);
         dataGenre = getResources().getStringArray(R.array.data_genre);
         dataRating = getResources().getStringArray(R.array.data_rating);
+        dataOverview = getResources().getStringArray(R.array.data_overview);
     }
 
 
